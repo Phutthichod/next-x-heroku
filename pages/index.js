@@ -5,10 +5,38 @@ import { useEffect } from 'react'
 export default function Home() {
   const route = useRouter()
   useEffect(() => {
-    fetch("/api/hello").then(res => res.json()).then(res => {
-      console.log(res)
-      route.push(res.url)
-    })
+
+    useEffect(async () => {
+      // fetch("/api/hello").then(res => res.json()).then(res => {
+      //   console.log(res)
+      // })
+      const { default: liff } = await import("@line/liff");
+      await liff.init({
+        liffId: "1655554465-Wld494r2" // Use own liffId
+      }).then(() => {
+        liff.getProfile().then(profile => {
+          alert(profile.userId)
+        })
+        alert(" init success")
+        // fetch("/api/hello").then(res => res.json()).then(res => {
+        //   console.log(res)
+        //   route.push(res.url)
+        // })
+      })
+        .catch((err) => {
+          alert("catch init")
+        });
+      alert("useEffect")
+      if (liff.isLoggedIn()) {
+
+        alert(" login")
+      } else {
+        alert("not login")
+      }
+
+
+    }, [])
+
   }, [])
   return (
     <></>
