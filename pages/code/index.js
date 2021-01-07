@@ -1,13 +1,12 @@
 import { useRouter } from 'next/router'
-import { useLayoutEffect, useEffect, useState } from 'react'
+import { useLayoutEffect, useState, useEffect, useState } from 'react'
 import { async } from 'regenerator-runtime'
 function Calendar() {
     const router = useRouter()
     const [eventList, setEventList] = useState([])
+    const [profile, setProfile] = useState({})
     const lineRichMenuChange = async () => {
-        const data = await liff.getProfile()
-
-        alert(data.userId)
+        alert(profile.userId)
         fetch(`https://api.line.me/v2/bot/user/${data.userId}/richmenu/richmenu-e419d3ad588ff46ccf001de031fdf94e`, {
             method: "post",
             headers: new Headers({
@@ -15,10 +14,15 @@ function Calendar() {
                 // 'Content-Type': 'application/x-www-form-urlencoded'
             }),
         }).then(res => res.json()).then(res => {
+            alert("success")
             liff.closeWindow()
+        }).catch(err => {
+            alert("catch")
         })
     }
     const submit = () => {
+        alert(profile.userId)
+
         if (router.query.code) {
             fetch("/api/hello", {
                 method: "post",
@@ -35,6 +39,7 @@ function Calendar() {
             }).then(res => {
                 alert("summit")
                 lineRichMenuChange()
+                // await lineRichMenuChange()
 
             })
         }
@@ -49,6 +54,8 @@ function Calendar() {
         })
 
         if (liff.isLoggedIn()) {
+            const data = await liff.getProfile()
+            setProfile(data)
 
             //   loadData()
         }
