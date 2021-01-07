@@ -5,8 +5,8 @@ function Calendar() {
     const router = useRouter()
     const [eventList, setEventList] = useState([])
     const [profile, setProfile] = useState({})
-    const lineRichMenuChange = async () => {
-        alert(profile.userId)
+    const lineRichMenuChange = (data) => {
+        // alert(profile.userId)
         fetch(`https://api.line.me/v2/bot/user/${data.userId}/richmenu/richmenu-e419d3ad588ff46ccf001de031fdf94e`, {
             method: "post",
             headers: new Headers({
@@ -20,8 +20,9 @@ function Calendar() {
             alert("catch")
         })
     }
-    const submit = () => {
-        alert(profile.userId)
+    const submit = async () => {
+        const data = await liff.getProfile()
+        alert(data.userId)
 
         if (router.query.code) {
             fetch("/api/hello", {
@@ -38,7 +39,7 @@ function Calendar() {
 
             }).then(res => {
                 alert("summit")
-                lineRichMenuChange()
+                lineRichMenuChange(data)
                 // await lineRichMenuChange()
 
             })
@@ -54,8 +55,8 @@ function Calendar() {
         })
 
         if (liff.isLoggedIn()) {
-            const data = await liff.getProfile()
-            setProfile(data)
+
+            // setProfile(data)
 
             //   loadData()
         }
