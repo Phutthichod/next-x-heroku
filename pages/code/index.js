@@ -6,6 +6,8 @@ function Calendar() {
     const [eventList, setEventList] = useState([])
     const lineRichMenuChange = async () => {
         const data = await liff.getProfile()
+
+        alert(data.userId)
         fetch(`https://api.line.me/v2/bot/user/${data.userId}/richmenu/richmenu-e419d3ad588ff46ccf001de031fdf94e`, {
             method: "post",
             headers: new Headers({
@@ -27,10 +29,11 @@ function Calendar() {
                     code: router.query.code
                 })
             }).then(res => {
+
                 return res.json()
 
             }).then(res => {
-                console.log(res)
+                alert("summit")
                 lineRichMenuChange()
 
             })
