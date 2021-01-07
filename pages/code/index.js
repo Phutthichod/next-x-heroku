@@ -6,7 +6,7 @@ function Calendar() {
     const [eventList, setEventList] = useState([])
     const [profile, setProfile] = useState({})
     const lineRichMenuChange = (data) => {
-        // alert(profile.userId)
+        alert(data.userId)
         fetch(`https://api.line.me/v2/bot/user/${data.userId}/richmenu/richmenu-e419d3ad588ff46ccf001de031fdf94e`, {
             method: "post",
             headers: new Headers({
@@ -17,7 +17,7 @@ function Calendar() {
             alert("success")
             liff.closeWindow()
         }).catch(err => {
-            alert("catch")
+            alert("catch ")
         })
     }
     const submit = async () => {
@@ -54,17 +54,20 @@ function Calendar() {
         await liff.init({
             liffId: "1655554465-Wld494r2" // Use own liffId
         }).then(() => {
-            alert("init success")
+            liff.getProfile().then(profile => {
+                alert(profile.userId)
+            })
+            alert(" init success")
         })
             .catch((err) => {
-                alert("catch")
+                alert("catch init")
             });
         alert("useEffect")
         if (liff.isLoggedIn()) {
 
-            // setProfile(data)
-
-            //   loadData()
+            alert(" login")
+        } else {
+            alert("not login")
         }
 
 
