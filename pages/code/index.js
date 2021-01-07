@@ -21,6 +21,7 @@ function Calendar() {
         })
     }
     const submit = async () => {
+        alert("submit")
         const data = await liff.getProfile()
         alert(data.userId)
 
@@ -52,8 +53,13 @@ function Calendar() {
         const { default: liff } = await import("@line/liff");
         await liff.init({
             liffId: "1655554465-Wld494r2" // Use own liffId
+        }).then(() => {
+            alert("init success")
         })
-
+            .catch((err) => {
+                alert("catch")
+            });
+        alert("useEffect")
         if (liff.isLoggedIn()) {
 
             // setProfile(data)
@@ -65,7 +71,7 @@ function Calendar() {
     }, [])
     return (
         <>
-            <h2>nocnoc@mail.com</h2><button onClick={submit}>accept</button>
+            <h2>nocnoc@mail.com</h2><button onClick={async () => await submit()}>accept</button>
         </>
     )
 }
