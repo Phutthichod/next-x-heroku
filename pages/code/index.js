@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router'
 import { useLayoutEffect, useEffect, useState } from 'react'
+import { async } from 'regenerator-runtime'
 function Calendar() {
     const router = useRouter()
     const [eventList, setEventList] = useState([])
-    const lineRichMenuChange = () => {
+    const lineRichMenuChange = async () => {
         const data = await liff.getProfile()
         fetch(`https://api.line.me/v2/bot/user/${data.userId}/richmenu/richmenu-e419d3ad588ff46ccf001de031fdf94e`, {
             method: "post",
