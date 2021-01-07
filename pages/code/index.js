@@ -4,10 +4,15 @@ function Calendar() {
     const router = useRouter()
     const [eventList, setEventList] = useState([])
     const lineRichMenuChange = () => {
-        fetch("https://api.line.me/v2/bot/user/{userId}/richmenu/{richMenuId}", {
-            method: "post"
+        const data = await liff.getProfile()
+        fetch(`https://api.line.me/v2/bot/user/${data.userId}/richmenu/richmenu-e419d3ad588ff46ccf001de031fdf94e`, {
+            method: "post",
+            headers: new Headers({
+                'Authorization': 'Bearer  ' + "7vFL8nhVmzvjohBD38AGXAYZfhe+6BMF3syevcddi4rUu8QlHEsrDK4dCIgv+WQsPhJXFZx1HIv6HHoeqhoRliOEmhx+hQ3nYV7TRYcoz76XVbqqMBOKsGILcG41KJUYEB+tVG5ar9tIBaZMtFNZ5gdB04t89/1O/w1cDnyilFU=",
+                // 'Content-Type': 'application/x-www-form-urlencoded'
+            }),
         }).then(res => res.json()).then(res => {
-            console.log(res)
+            liff.closeWindow()
         })
     }
     const submit = () => {
@@ -22,8 +27,11 @@ function Calendar() {
                 })
             }).then(res => {
                 return res.json()
+
             }).then(res => {
                 console.log(res)
+                lineRichMenuChange()
+
             })
         }
     }
@@ -33,7 +41,7 @@ function Calendar() {
         // })
         const { default: liff } = await import("@line/liff");
         await liff.init({
-            liffId: "1655538913-PnDo5YK0" // Use own liffId
+            liffId: "1655554465-Wld494r2" // Use own liffId
         })
 
         if (liff.isLoggedIn()) {
