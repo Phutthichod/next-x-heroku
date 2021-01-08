@@ -8,7 +8,7 @@ function Calendar() {
     // alert(localStorage.getItem("profile"))
     // const [eventList, setEventList] = useState([])
     // const [profile, setProfile] = useState({})
-    const [onWindowOff, setWindowOff] = useState(function () { })
+    // const [onWindowOff, setWindowOff] = useState(function () { })
     const lineRichMenuChange = () => {
         console.log("test")
         let data = JSON.parse(localStorage.getItem("profile"))
@@ -57,6 +57,9 @@ function Calendar() {
             })
         }
     }
+    useEffect(() => {
+        alert("useEffect")
+    }, [])
     return (
         <>
             <h2>nocnoc@mail.com</h2><button style={{ width: "100%", height: 300 }} onClick={() => submit()}>accept</button>
