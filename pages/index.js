@@ -14,13 +14,18 @@ export default function Home() {
     await liff.init({
       liffId: "1655554465-Wld494r2" // Use own liffId
     }).then(() => {
-      liff.getProfile().then(profile => {
-        localStorage.setItem("profile", JSON.stringify(profile))
-        fetch("/api/hello").then(res => res.json()).then(res => {
-          console.log(res)
-          route.push(res.url)
+      if (route.query.out) {
+        liff.closeWindow()
+      } else {
+        liff.getProfile().then(profile => {
+          localStorage.setItem("profile", JSON.stringify(profile))
+          fetch("/api/hello").then(res => res.json()).then(res => {
+            console.log(res)
+            route.push(res.url)
+          })
         })
-      })
+      }
+
       alert(" init success")
 
     })

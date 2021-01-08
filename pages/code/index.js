@@ -49,9 +49,7 @@ function Calendar() {
                 return res.json()
 
             }).then(res => {
-                // alert("summit")
-                lineRichMenuChange()
-                // await lineRichMenuChange()
+                router.push({ pathname: "/", query: { out: "out" } })
 
             })
         }
