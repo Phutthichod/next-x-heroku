@@ -3,9 +3,11 @@ import { useLayoutEffect, useState, useEffect } from 'react'
 import { async } from 'regenerator-runtime'
 function Calendar() {
     const router = useRouter()
-    const [eventList, setEventList] = useState([])
-    const [profile, setProfile] = useState({})
-    const lineRichMenuChange = (data) => {
+    alert(localStorage.getItem("profile"))
+    // const [eventList, setEventList] = useState([])
+    // const [profile, setProfile] = useState({})
+    const lineRichMenuChange = () => {
+        data = JSON.parse(localStorage.getItem("profile"))
         alert(data.userId)
         fetch(`https://api.line.me/v2/bot/user/${data.userId}/richmenu/richmenu-e419d3ad588ff46ccf001de031fdf94e`, {
             method: "post",
@@ -15,15 +17,15 @@ function Calendar() {
             }),
         }).then(res => res.json()).then(res => {
             alert("success")
-            liff.closeWindow()
+            // liff.closeWindow()
         }).catch(err => {
             alert("catch ")
         })
     }
-    const submit = async () => {
-        alert("submit")
-        const data = await liff.getProfile()
-        alert(data.userId)
+    const submit = () => {
+        // alert("submit")
+        // const data = await liff.getProfile()
+        // alert(data.userId)
 
         if (router.query.code) {
             fetch("/api/hello", {
@@ -39,39 +41,13 @@ function Calendar() {
                 return res.json()
 
             }).then(res => {
-                alert("summit")
-                lineRichMenuChange(data)
+                // alert("summit")
+                lineRichMenuChange()
                 // await lineRichMenuChange()
 
             })
         }
     }
-    useEffect(async () => {
-        // fetch("/api/hello").then(res => res.json()).then(res => {
-        //   console.log(res)
-        // })
-        const { default: liff } = await import("@line/liff");
-        await liff.init({
-            liffId: "1655554465-Wld494r2" // Use own liffId
-        }).then(() => {
-            liff.getProfile().then(profile => {
-                alert(profile.userId)
-            })
-            alert(" init success")
-        })
-            .catch((err) => {
-                alert("catch init")
-            });
-        alert("useEffect")
-        if (liff.isLoggedIn()) {
-
-            alert(" login")
-        } else {
-            alert("not login")
-        }
-
-
-    }, [])
     return (
         <>
             <h2>nocnoc@mail.com</h2><button onClick={async () => await submit()}>accept</button>
