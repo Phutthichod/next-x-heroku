@@ -56,7 +56,7 @@ function Calendar() {
             })
         }
     }
-    useEffect(() => {
+    useEffect(async () => {
         await liff.init({
             liffId: "1655554465-Wld494r2" // Use own liffId
         }).then(() => {
