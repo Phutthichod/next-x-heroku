@@ -3,7 +3,7 @@ import { useLayoutEffect, useState, useEffect } from 'react'
 import { async } from 'regenerator-runtime'
 function Calendar() {
     const router = useRouter()
-    alert(localStorage.getItem("profile"))
+    // alert(localStorage.getItem("profile"))
     // const [eventList, setEventList] = useState([])
     // const [profile, setProfile] = useState({})
     const lineRichMenuChange = () => {
