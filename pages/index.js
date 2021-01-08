@@ -46,7 +46,7 @@ export default function Home() {
     }
 
 
-  }, [route])
+  }, [route.query])
 
   // }, [])
   return (
