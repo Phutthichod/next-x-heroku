@@ -26,7 +26,7 @@ function Calendar() {
                 url
             })
         }).then(res => res.json()).then(res => {
-            console.log(res)
+            alert(res)
             router.push({ pathname: "/", query: { out: "out" } })
             // onWindowOff()
 

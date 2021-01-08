@@ -1,7 +1,7 @@
 const request = require('request');
-export default (req, res) => {
+export default async (req, res) => {
     const data = req.body
-    request.post(data.url, {
+    await request.post(data.url, {
         'auth': {
             'bearer': data.token
         }
@@ -9,5 +9,4 @@ export default (req, res) => {
         res.statusCode = 200
         res.json({ test: "123" })
     })
-
 }

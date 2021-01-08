@@ -26,18 +26,18 @@ export default function Home() {
         })
       }
 
-      alert(" init success")
+      // alert(" init success")
 
     })
       .catch((err) => {
         alert("catch init")
       });
-    alert("useEffect")
+    // alert("useEffect")
     if (liff.isLoggedIn()) {
 
-      alert(" login")
+      // alert(" login")
     } else {
-      alert("not login")
+      // alert("not login")
     }
 
 
