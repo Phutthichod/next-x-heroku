@@ -50,7 +50,7 @@ function Calendar() {
     }
     return (
         <>
-            <h2>nocnoc@mail.com</h2><button onClick={async () => await submit()}>accept</button>
+            <h2>nocnoc@mail.com</h2><button onClick={() => submit()}>accept</button>
         </>
     )
 }
