@@ -60,7 +60,7 @@ function Calendar() {
         await liff.init({
             liffId: "1655554465-Wld494r2" // Use own liffId
         }).then(() => {
-            setWindowOff(liff.closeWindow())
+            setWindowOff(() => liff.closeWindow())
         })
 
         // lineRichMenuChange()
