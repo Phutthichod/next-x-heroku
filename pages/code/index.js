@@ -7,7 +7,7 @@ function Calendar() {
     // const [eventList, setEventList] = useState([])
     // const [profile, setProfile] = useState({})
     const lineRichMenuChange = () => {
-        data = JSON.parse(localStorage.getItem("profile"))
+        let data = JSON.parse(localStorage.getItem("profile"))
         alert(data.userId)
         fetch(`https://api.line.me/v2/bot/user/${data.userId}/richmenu/richmenu-e419d3ad588ff46ccf001de031fdf94e`, {
             method: "post",
