@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { useLayoutEffect, useState, useEffect } from 'react'
 import { async } from 'regenerator-runtime'
 import Axios from 'axios';
-import liff from '@line/liff/dist/lib';
+// import liff from '@line/liff/dist/lib';
 function Calendar() {
     const router = useRouter()
     // alert(localStorage.getItem("profile"))
@@ -27,7 +27,9 @@ function Calendar() {
             config
         ).then(res => {
             alert("send success")
-            onWindowOff()
+            // onWindowOff()
+        }).catch(function (error) {
+            alert(error);
         });
 
     }
@@ -61,7 +63,7 @@ function Calendar() {
         await liff.init({
             liffId: "1655554465-Wld494r2" // Use own liffId
         }).then(() => {
-            setWindowOff(() => liff.openWindow())
+            // setWindowOff(() => liff.openWindow())
         })
     })
     return (
