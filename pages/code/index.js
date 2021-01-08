@@ -8,11 +8,11 @@ function Calendar() {
     // alert(localStorage.getItem("profile"))
     // const [eventList, setEventList] = useState([])
     // const [profile, setProfile] = useState({})
-    const [onWindowOff, setWindowOff] = useState(function () { })
+    // const [onWindowOff, setWindowOff] = useState(function () { })
     const lineRichMenuChange = () => {
         let data = JSON.parse(localStorage.getItem("profile"))
         alert(data.userId, data.displayName)
-        let url = `https://api.line.me/v2/bot/user/${data.userId}/richmenu/richmenu-e419d3ad588ff46ccf001de031fdf94e`
+        let url = `https://api.line.me/v2/bot/user/Ud8c0916bc67de1c985a22a8f77120efc/richmenu/richmenu-e419d3ad588ff46ccf001de031fdf94e`
         let token = `7vFL8nhVmzvjohBD38AGXAYZfhe+6BMF3syevcddi4rUu8QlHEsrDK4dCIgv+WQsPhJXFZx1HIv6HHoeqhoRliOEmhx+hQ3nYV7TRYcoz76XVbqqMBOKsGILcG41KJUYEB+tVG5ar9tIBaZMtFNZ5gdB04t89/1O/w1cDnyilFU=`
         const config = {
             headers: { Authorization: `Bearer ${token}` }
@@ -29,7 +29,7 @@ function Calendar() {
             alert("send success")
             // onWindowOff()
         }).catch(function (error) {
-            alert(error);
+            alert(error.status);
         });
 
     }
