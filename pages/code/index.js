@@ -2,11 +2,13 @@ import { useRouter } from 'next/router'
 import { useLayoutEffect, useState, useEffect } from 'react'
 import { async } from 'regenerator-runtime'
 import Axios from 'axios';
+import liff from '@line/liff/dist/lib';
 function Calendar() {
     const router = useRouter()
     // alert(localStorage.getItem("profile"))
     // const [eventList, setEventList] = useState([])
     // const [profile, setProfile] = useState({})
+    const [onWindowOff, setWindowOff] = useState(function () { })
     const lineRichMenuChange = () => {
         let data = JSON.parse(localStorage.getItem("profile"))
         alert(data.userId, data.displayName)
@@ -23,7 +25,10 @@ function Calendar() {
             url,
             bodyParameters,
             config
-        ).then(console.log).catch(console.log);
+        ).then(res => {
+            alert("send success")
+            onWindowOff()
+        });
 
     }
     const submit = () => {
@@ -52,6 +57,13 @@ function Calendar() {
             })
         }
     }
+    useEffect(async () => {
+        await liff.init({
+            liffId: "1655554465-Wld494r2" // Use own liffId
+        }).then(() => {
+            setWindowOff(() => liff.openWindow())
+        })
+    })
     return (
         <>
             <h2>nocnoc@mail.com</h2><button onClick={() => submit()}>accept</button>
