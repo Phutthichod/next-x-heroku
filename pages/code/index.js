@@ -8,7 +8,7 @@ function Calendar() {
     // alert(localStorage.getItem("profile"))
     // const [eventList, setEventList] = useState([])
     // const [profile, setProfile] = useState({})
-    // const [onWindowOff, setWindowOff] = useState(function () { })
+    const [onWindowOff, setWindowOff] = useState(function () { })
     const lineRichMenuChange = () => {
         let data = JSON.parse(localStorage.getItem("profile"))
         // alert(data.userId, data.displayName)
@@ -25,6 +25,7 @@ function Calendar() {
                 url
             })
         }).then(res => res.json()).then(res => {
+            onWindowOff()
             console.log(res)
         })
 
@@ -56,6 +57,12 @@ function Calendar() {
         }
     }
     useEffect(() => {
+        await liff.init({
+            liffId: "1655554465-Wld494r2" // Use own liffId
+        }).then(() => {
+            setWindowOff(liff.closeWindow())
+        })
+
         // lineRichMenuChange()
     })
     return (
