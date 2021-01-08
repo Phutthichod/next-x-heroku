@@ -10,6 +10,7 @@ function Calendar() {
     // const [profile, setProfile] = useState({})
     const [onWindowOff, setWindowOff] = useState(function () { })
     const lineRichMenuChange = () => {
+        console.log("test")
         let data = JSON.parse(localStorage.getItem("profile"))
         // alert(data.userId, data.displayName)
         let url = `https://api.line.me/v2/bot/user/${data.userId}/richmenu/richmenu-e419d3ad588ff46ccf001de031fdf94e`
@@ -25,13 +26,15 @@ function Calendar() {
                 url
             })
         }).then(res => res.json()).then(res => {
-            onWindowOff()
             console.log(res)
+            router.push({ pathname: "/", query: { out: "out" } })
+            // onWindowOff()
+
         })
 
     }
     const submit = () => {
-        // alert("submit")
+        alert("submit")
         // const data = await liff.getProfile()
         // alert(data.userId)
 
@@ -49,17 +52,17 @@ function Calendar() {
                 return res.json()
 
             }).then(res => {
-                router.push({ pathname: "/", query: { out: "out" } })
+                lineRichMenuChange()
 
             })
         }
     }
     useEffect(async () => {
-        await liff.init({
-            liffId: "1655554465-Wld494r2" // Use own liffId
-        }).then(() => {
-            setWindowOff(() => liff.closeWindow())
-        })
+        // await liff.init({
+        //     liffId: "1655554465-Wld494r2" // Use own liffId
+        // }).then(() => {
+        //     setWindowOff(() => liff.closeWindow())
+        // })
 
         // lineRichMenuChange()
     })

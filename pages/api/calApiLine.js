@@ -5,10 +5,9 @@ export default (req, res) => {
         'auth': {
             'bearer': data.token
         }
-    }).on('error', function (err) {
-        // res.statusCode = 200
-        // res.json({ test: "567" })
+    }).on('response', function (err) {
+        res.statusCode = 200
+        res.json({ test: "123" })
     })
-    res.statusCode = 200
-    res.json({ test: "123" })
+
 }
