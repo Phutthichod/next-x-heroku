@@ -59,7 +59,7 @@ function Calendar() {
     }
     return (
         <>
-            <h2>nocnoc@mail.com</h2><button style={{ width: "100%" }} onClick={() => submit()}>accept</button>
+            <h2>nocnoc@mail.com</h2><button style={{ width: "100%", height: 300 }} onClick={() => submit()}>accept</button>
         </>
     )
 }
