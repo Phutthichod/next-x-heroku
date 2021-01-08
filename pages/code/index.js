@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useLayoutEffect, useState, useEffect } from 'react'
 import { async } from 'regenerator-runtime'
-import Axios from 'axios';
+// import Axios from 'axios';
 function Calendar() {
     const router = useRouter()
     // alert(localStorage.getItem("profile"))
@@ -19,11 +19,11 @@ function Calendar() {
         const bodyParameters = {
 
         };
-        Axios.post(
-            url,
-            bodyParameters,
-            config
-        ).then(console.log).catch(console.log);
+        // Axios.post(
+        //     url,
+        //     bodyParameters,
+        //     config
+        // ).then(console.log).catch(console.log);
 
     }
     const submit = () => {
