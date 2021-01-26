@@ -14,7 +14,7 @@ function Calendar() {
         let data = JSON.parse(localStorage.getItem("profile"))
         alert(data.userId, data.displayName)
         let url = `https://api.line.me/v2/bot/user/${data.userId}/richmenu/richmenu-c463432b860cd993d02c2f9387b3fadc`
-        let token = `7vFL8nhVmzvjohBD38AGXAYZfhe+6BMF3syevcddi4rUu8QlHEsrDK4dCIgv+WQsPhJXFZx1HIv6HHoeqhoRliOEmhx+hQ3nYV7TRYcoz76XVbqqMBOKsGILcG41KJUYEB+tVG5ar9tIBaZMtFNZ5gdB04t89/1O/w1cDnyilFU=`
+        let token = `btJQcQqukt3/aX8TXIj4UULx5hl7SMJdlLNtby9xJbzqLCJ/CGTMb0NBwqafAHs1HM+NXhk1YdvizPJ8zDwJH0xfO4WRdKCmYit7pfWkKPiiPOA2C6Qxb2GtMjbqzPLD/YnJEB+O0m8/DGOlBbONfwdB04t89/1O/w1cDnyilFU=`
         fetch("/api/calApiLine", {
             method: "post",
             headers: {
